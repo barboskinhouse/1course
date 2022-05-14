@@ -99,44 +99,8 @@ def game_design():
     screen.blit(paper_button,(0,0))
 
     pygame.display.update()
-'''
-def game_algorithm():
-    mouse = pygame.mouse.get_pos()
-    click = pygame.mouse.get_pressed()
-    
-    bunny_change = 'None'
-    robot_change = 'None'
-    change = ['stone','scissors','paper']
-    
-    if click[0]:
-        if 429 < mouse[0] < 555 and 241 < mouse[1] < 368:
-            bunny_change = change[0]
-        elif 405 < mouse[0] < 710 and 416 < mouse[1] < 505:
-            bunny_change = change[1]
-        elif 405 < mouse[0] < 700 and 560 < mouse[1] < 615:
-            bunny_change = change[2]
-            
-    if len(bunny_change) > 4:
-        robot_change = change[random.randint(0, len(change)-1)]
-        #реализация игры
-        pygame.time.wait(300)
-        if bunny_change == robot_change:
-            #Ничья
-            tab = pygame.image.load('draw.png')
-            screen.blit(tab,(0,0))
-        elif (bunny_change == change[0] and robot_change == change[2]) \
-             or (bunny_change == change[1] and robot_change == change[0]) \
-             or (bunny_change == change[2] and robot_change == change[1]):
-            #Проигрыш
-            tab = pygame.image.load('lose.png')
-            screen.blit(tab,(0,0))
-        else:
-            #Победа
-            tab = pygame.image.load('win.png')
-            screen.blit(tab,(0,0))
-            
-        pygame.display.update()
-'''
+
+        
 #создание игрового окна
 width = 1280
 height = 720
@@ -156,6 +120,7 @@ dev_button = menu[3]
 #Переключатели для кнопок
 mainmenu = 1
 game = 0
+res = 0
 rules1 = 0
 rules2 = 0
 dev = 0
@@ -205,46 +170,61 @@ while running:
                         rules2 = 0
                         rules1 = 1
         elif game == 1:
-            #mainmenu, game = back_button(mainmenu, game) #пока так
-            mouse = pygame.mouse.get_pos()
-            click = pygame.mouse.get_pressed()
+            mainmenu, game = back_button(mainmenu, game)
             
             bunny_change = 'None'
-            robot_change = 'None'
             change = ['stone','scissors','paper']
-            
-            if click[0]:
-                if 429 < mouse[0] < 555 and 241 < mouse[1] < 368:
-                    bunny_change = change[0]
-                elif 405 < mouse[0] < 710 and 416 < mouse[1] < 505:
-                    bunny_change = change[1]
-                elif 405 < mouse[0] < 700 and 560 < mouse[1] < 615:
-                    bunny_change = change[2]
-                    
-            if len(bunny_change) > 4:
-                robot_change = change[random.randint(0, len(change)-1)]
-                #реализация игры
-                pygame.time.wait(300)
-                if bunny_change == robot_change:
-                    #Ничья
-                    tab = pygame.image.load('draw.png')
-                    screen.blit(tab,(0,0))
-                elif (bunny_change == change[0] and robot_change == change[2]) \
-                     or (bunny_change == change[1] and robot_change == change[0]) \
-                     or (bunny_change == change[2] and robot_change == change[1]):
-                    #Проигрыш
-                    tab = pygame.image.load('lose.png')
-                    screen.blit(tab,(0,0))
-                else:
-                    #Победа
-                    tab = pygame.image.load('win.png')
-                    screen.blit(tab,(0,0))
-                    
-                pygame.display.update()
+            robot_change = change[random.randint(0, len(change)-1)]
             if event.type == pygame.MOUSEBUTTONDOWN: 
                 if event.button == 1:
-                    if 800 < event.pos[0] < 900 and 100 < event.pos[1] < 180:
-                        mainpage()
-                        mainmenu = 1
+                    if 429 < event.pos[0] < 555 and 241 < event.pos[1] < 368:
+                        bunny_change = change[0]
                         game = 0
+                        res = 1                        
+                    elif 405 < event.pos[0] < 710 and 416 < event.pos[1] < 505:
+                        bunny_change = change[1]
+                        game = 0
+                        res = 1
+                    elif 405 < event.pos[0] < 700 and 560 < event.pos[1] < 615:
+                        bunny_change = change[2]
+                        game = 0
+                        res = 1
+                        
 
+
+        elif res == 1:
+            if bunny_change == robot_change:
+                #Ничья
+                tab = pygame.image.load('draw.png')
+                screen.blit(tab,(0,0))
+                if event.type == pygame.MOUSEBUTTONDOWN: 
+                    if event.button == 1:
+                        if 800 < event.pos[0] < 900 and 100 < event.pos[1] < 180:
+                            mainpage()
+                            mainmenu = 1
+                            res = 0                
+            elif (bunny_change == change[0] and robot_change == change[2]) \
+                 or (bunny_change == change[1] and robot_change == change[0]) \
+                 or (bunny_change == change[2] and robot_change == change[1]):
+                #Проигрыш
+                tab = pygame.image.load('lose.png')
+                screen.blit(tab,(0,0))
+                if event.type == pygame.MOUSEBUTTONDOWN: 
+                    if event.button == 1:
+                        if 800 < event.pos[0] < 900 and 100 < event.pos[1] < 180:
+                            mainpage()
+                            mainmenu = 1
+                            res = 0                
+            else:
+                #Победа
+                tab = pygame.image.load('win.png')
+                screen.blit(tab,(0,0))
+                if event.type == pygame.MOUSEBUTTONDOWN: 
+                    if event.button == 1:
+                        if 800 < event.pos[0] < 900 and 100 < event.pos[1] < 180:
+                            mainpage()
+                            mainmenu = 1
+                            res = 0
+            pygame.display.update()
+            
+                
