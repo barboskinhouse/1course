@@ -35,3 +35,5 @@
 :grey_question: На выходе смешанная последовательность множеств.  
 `Решение:` 
 Отсортировать список по размерности элементов, т.е. размеру полученных подмножеств.
+
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Written+by+Angelina+Myshkova)](https://git.io/typing-svg)
