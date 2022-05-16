@@ -143,8 +143,6 @@ while running:
                 if event.button == 1:
                     if 1160 < event.pos[0] < 1160+exit_button.get_width() and 55 < event.pos[1] < 55+exit_button.get_height()-120:
                         if mainmenu == 1:
-                            s = pygame.mixer.Sound('end.ogg')
-                            s.play()
                             running = False
                             pygame.quit()
                     elif 500 < event.pos[0] < 500+game_button.get_width():
@@ -220,19 +218,15 @@ while running:
                         res = 1
                         
         elif res == 1:
-            pygame.mixer.music.pause()
             if bunny_change == robot_change:
                 #Ничья
                 tab = pygame.image.load('draw.png')
                 screen.blit(tab,(0,0))
-                s = pygame.mixer.Sound('lose.ogg')
-                s.play()
                 if event.type == pygame.MOUSEBUTTONDOWN: 
                     if event.button == 1:
                         if 800 < event.pos[0] < 900 and 100 < event.pos[1] < 180:
                             s = pygame.mixer.Sound('change.ogg')
                             s.play()
-                            pygame.mixer.music.unpause()
                             mainpage()
                             mainmenu = 1
                             res = 0                
@@ -242,14 +236,11 @@ while running:
                 #Проигрыш
                 tab = pygame.image.load('lose.png')
                 screen.blit(tab,(0,0))
-                s = pygame.mixer.Sound('lose.ogg')
-                s.play()
                 if event.type == pygame.MOUSEBUTTONDOWN: 
                     if event.button == 1:
                         if 800 < event.pos[0] < 900 and 100 < event.pos[1] < 180:
                             s = pygame.mixer.Sound('change.ogg')
                             s.play()
-                            pygame.mixer.music.unpause()
                             mainpage()
                             mainmenu = 1
                             res = 0                
@@ -257,14 +248,11 @@ while running:
                 #Победа
                 tab = pygame.image.load('win.png')
                 screen.blit(tab,(0,0))
-                s = pygame.mixer.Sound('win.ogg')
-                s.play()
                 if event.type == pygame.MOUSEBUTTONDOWN: 
                     if event.button == 1:
                         if 800 < event.pos[0] < 900 and 100 < event.pos[1] < 180:
                             s = pygame.mixer.Sound('change.ogg')
                             s.play()
-                            pygame.mixer.music.unpause()
                             mainpage()
                             mainmenu = 1
                             res = 0
