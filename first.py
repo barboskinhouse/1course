@@ -10,3 +10,4 @@ for i in range(1, len(st)+1):
 one=list(st[0]+st[len(st)-1])
 lst.append(one)
 print(lst)
+
