@@ -198,7 +198,8 @@ while running:
             robot_change = change[random.randint(0, len(change)-1)]
             if event.type == pygame.MOUSEBUTTONDOWN: 
                 if event.button == 1:
-                    if 429 < event.pos[0] < 555 and 241 < event.pos[1] < 368:
+                    print(event.pos)
+                    if 399 < event.pos[0] < 710 and 241 < event.pos[1] < 400:
                         s = pygame.mixer.Sound('change.ogg')
                         s.play()
                         bunny_change = change[0]
@@ -210,7 +211,7 @@ while running:
                         bunny_change = change[1]
                         game = 0
                         res = 1
-                    elif 405 < event.pos[0] < 700 and 560 < event.pos[1] < 615:
+                    elif 405 < event.pos[0] < 700 and 540 < event.pos[1] < 680:
                         s = pygame.mixer.Sound('change.ogg')
                         s.play()
                         bunny_change = change[2]
