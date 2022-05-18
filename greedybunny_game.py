@@ -26,7 +26,6 @@ def mainpage():
     dev_button = pygame.image.load('devbutton.png')
     dev_button = pygame.transform.scale(dev_button,(dev_button.get_width()-100,dev_button.get_height()-100))
     screen.blit(dev_button,(500,400))
-
     pygame.display.update()
     
     return exit_button, game_button, rules_button, dev_button
